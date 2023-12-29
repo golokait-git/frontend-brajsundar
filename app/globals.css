@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.paginationscrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 4px !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1b4963;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22668d;
+}
+
+.glow-container {
+  position: relative;
+}
+
+.glow-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #22668d30;
+  border-radius: 10px;
+  z-index: -1;
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #22668d40, 0 0 20px #22668d40;
+  }
+  50% {
+    box-shadow: 0 0 20px #22668d70, 0 0 40px #22668d40;
+  }
+  100% {
+    box-shadow: 0 0 5px #22668d40, 0 0 20px #22668d40;
+  }
+}
+
+.gradient-bg {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000c3);
+  top: 80px;
+}
+
+/* Podcast Style */
+
+.mainPodcast {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.parentDiv1 {
+  grid-area: 1 / 1 / 4 / 3;
+}
+.parentDiv2 {
+  grid-area: 1 / 3 / 4 / 5;
+}
+.parentDiv3 {
+  grid-area: 4 / 1 / 5 / 5;
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
