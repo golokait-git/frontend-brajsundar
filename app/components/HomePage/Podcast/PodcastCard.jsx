@@ -8,8 +8,8 @@ const PodcastCard = (props) => {
   let newData = new Date(props?.data?.published).toLocaleString();
   return (
     <div
-      className={`overflow-hidden bg-white shadow-lg border border-[#22668d] rounded-bl-3xl rounded-tr-3xl cursor-pointer transition-all hover:transition-all duration-200 mx-auto hover:duration-200 shadow-[#22668d] hover:shadow-[#22668d] hover:shadow-xl ${
-        props?.type === "home" ? "scale-100 hover:scale-105 w-[95%]" : "w-full"
+      className={`overflow-hidden bg-white shadow-lg border border-[#22668d] rounded-bl-3xl rounded-tr-3xl cursor-pointer scale-100 hover:scale-105 transition-all hover:transition-all duration-200 mx-auto hover:duration-200 shadow-[#22668d] hover:shadow-[#22668d] hover:shadow-xl ${
+        props?.type === "home" ? "w-[95%]" : "w-full"
       }`}
       onClick={() => navigate.push(`/podcast/${props.data.id}`)}
     >

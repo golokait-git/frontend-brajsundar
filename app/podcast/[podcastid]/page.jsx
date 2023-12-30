@@ -83,7 +83,7 @@ const PodcastView = () => {
     setDuration("0:00");
   };
   return (
-    <section className="flex flex-col items-start md:max-h-[100vh] w-full overflow-hidden">
+    <section className="flex flex-col items-start md:max-h-[100vh] w-full overflow-hidden bg-gradient-to-r from-[#f4e9d9] to-[#ffffff]">
       {data && (
         <>
           <div className="flex justify-center items-start flex-col md:flex-row">
