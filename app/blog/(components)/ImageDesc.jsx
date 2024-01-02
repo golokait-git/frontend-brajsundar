@@ -3,7 +3,6 @@ import Image from "next/image";
 import React from "react";
 
 const ImageDesc = (props) => {
-  console.log(props);
   return (
     <section
       id={props.id}
