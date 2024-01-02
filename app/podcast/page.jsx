@@ -190,7 +190,7 @@ const Podcast = () => {
               <Image src="/assets/podcast.png" width={440} height={380} />
             </div>
           </div>
-          <div className="flex justify-between items-center md:mb-12 w-full md:w-[90%] md:mx-auto md:flex-row-reverse flex-col">
+          <div className="flex justify-between items-center my-5 md:mb-12 w-full md:w-[90%] md:mx-auto md:flex-row-reverse flex-col">
             {/* <form
               className="flex justify-center items-center border-2 w-[90%] md:w-[30%] border-[#22668d] rounded-md md:mb-0 mb-4"
               onSubmit={searchHandler}
@@ -220,38 +220,6 @@ const Podcast = () => {
                 </button>
               )}
             </form> */}
-            {/* new search */}
-            <div class="mx-auto max-w-md">
-              <form action="" class="relative mx-auto w-max" onSubmit={handleSubmit}>
-                <input
-                  type="search"
-                  name="search"
-                  id="search"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  
-                  placeholder="Search Podcast"
-                  class="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-[#22668d] focus:pl-16 focus:pr-4"
-                />
-                
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500  px-3.5 peer-focus:border-[#22668d] peer-focus:stroke-[#22668d]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  onClick={searchHandler}
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </form>
-            </div>
-            {/* new search */}
             <div className="flex justify-center relative items-center border-2 border-[#22668d] rounded-md w-[90%] md:w-[20%] mb-8 md:mb-0">
               <select
                 id="select"
@@ -283,6 +251,39 @@ const Podcast = () => {
                 </label>
               )}
             </div>
+            {/* new search */}
+            <div class=" w-[90%] md:w-[5%]">
+              <form action="" class="relative mx-auto w-max" onSubmit={handleSubmit}>
+                <input
+                  type="search"
+                  name="search"
+                  id="search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  
+                  placeholder="Search Podcast"
+                  class="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border-slate-500 border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-[#22668d] focus:pl-16 focus:pr-4"
+                />
+                
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500  px-3.5 peer-focus:border-[#22668d] peer-focus:stroke-[#22668d]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  onClick={searchHandler}
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </form>
+            </div>
+            {/* new search */}
+            
           </div>
         </div>
         {!loading && searchActive && searchData.length === 0 && (

@@ -8,7 +8,7 @@ const PodcastCard = (props) => {
   let newData = new Date(props?.data?.published).toLocaleString();
   return (
     <div
-      className={`overflow-hidden bg-white shadow-lg border border-[#22668d] rounded-bl-3xl rounded-tr-3xl cursor-pointer scale-100 hover:scale-105 transition-all hover:transition-all duration-200 mx-auto hover:duration-200 shadow-[#22668d] hover:shadow-[#22668d] hover:shadow-xl ${
+      className={`overflow-hidden flex flex-col justify-between bg-white shadow-lg border border-[#22668d] rounded-bl-3xl rounded-tr-3xl cursor-pointer scale-100 hover:scale-105 transition-all hover:transition-all duration-200 mx-auto hover:duration-200 shadow-[#22668d] hover:shadow-[#22668d] hover:shadow-xl ${
         props?.type === "home" ? "w-[95%]" : "w-full"
       }`}
       onClick={() => navigate.push(`/podcast/${props.data.id}`)}
@@ -22,9 +22,9 @@ const PodcastCard = (props) => {
           className="w-full object-contain rounded-bl-3xl rounded-tr-3xl border border-black"
         />
       </div>
-      <div className="py-2 px-2 h-[100%]">
-        <p className="text-sm mt-2 px-2 pb-2 text-justify">{props?.data?.title}</p>
-        <p className="mt-2 mb-1 text-right text-[#22668d] text-xs px-2"> {newData}</p>
+      <div className="py-2 px-2 w-full md:h-[30%] flex flex-col justify-between">
+        <p className="text-sm mt-2 px-2 pb-2 top-0 text-justify">{props?.data?.title}</p>
+        <p className="mt-2 mb-1 bottom-0 text-right text-[#22668d] text-xs px-2"> {newData}</p>
       </div>
     </div>
   );
