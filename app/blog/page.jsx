@@ -42,9 +42,9 @@ const Blog = () => {
   ];
   return (
     <main className="w-full">
-      <section className="min-h-[100vh] bg-gradient-to-r from-[#f4e9d9] to-[#ffffff] w-full ">
+      <section className="min-h-[100vh] bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] w-full ">
         <HeroSection />
-        <section className="bg-gradient-to-r from-[#f4e9d9] to-[#ffffff] w-full">
+        <section className="bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] w-full">
           <section className="max-w-6xl mx-auto mt-20 flex justify-center items-center p-6 md:p-10 flex-col">
             {data.map((item, index) => {
               return (
@@ -60,10 +60,7 @@ const Blog = () => {
             })}
           </section>
         </section>
-        <div class="flex justify-around items-center">
-</div>
-
-      </section>
+       </section>
     </main>
   );
 };

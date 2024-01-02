@@ -11,11 +11,11 @@ const Footer = () => {
   );
   if (!pathname.startsWith("/podcast/") && !pathname.match(re))
     return (
-      <footer className="bg-[#1b4963] w-full">
+      <footer className="bg-[#22668d] w-full mx-auto font-serif">
         <section className="max-w-6xl mx-auto py-6 flex justify-center items-center flex-col relative">
-          <ul className="md:flex justify-evenly items-center w-[50%] my-2 hidden">
+          <ul className="md:flex justify-evenly items-center w-[80%] my-2 hidden">
             <Link href={"/academy"}>
-              <span className="text-white text-sm cursor-pointer tracking-wide">
+              <span className="text-white text-sm cursor-pointer tracking-wide scale-100 hover:scale-125 hover:transition-all hover:duration-200">
                 Academy
               </span>
             </Link>
@@ -55,7 +55,7 @@ const Footer = () => {
               </span>
             </Link>
           </ul>
-          <p className="text-white font-semibold tracking-wide text-sm md:text-xl md:mt-4 text-center">
+          <p className="text-white tracking-wider font-medium md:text-xl md:mt-4 text-center">
             © 2023 Brajsundar Das. All Rights Reserved.
           </p>
           <a

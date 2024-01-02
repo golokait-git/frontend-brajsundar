@@ -26,7 +26,7 @@ const BookSection = () => {
     Books();
   }, []);
   return (
-    <main className="w-full bg-[#f5f5f5]">
+    <main className="w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
       <section className="flex md:justify-center items-center my-10 mx-auto max-w-6xl w-full flex-col">
         <HomeTitle title="Books" link="/literature/books" />
         <div className="flex justify-evenly items-start flex-col md:flex-row mt-6 mb-10 md:w-[70%]">

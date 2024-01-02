@@ -4,7 +4,6 @@ import HeroSection from "./(components)/HeroSection";
 import ImageDesc from "./(components)/ImageDesc";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 const About = () => {
-  const customBackgroundColor = "#22668D";
   const data = [
     {
       image: "ab1",
@@ -50,9 +49,9 @@ const About = () => {
   ];
   return (
     <main className="w-full">
-      <section className="min-h-[100vh] bg-gradient-to-r from-[#f4e9d9] to-[#ffffff] w-full ">
+      <section className="min-h-[100vh] bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] w-full ">
         <HeroSection />
-        <section className="bg-gradient-to-r from-[#f4e9d9] to-[#ffffff] w-full">
+        <section className="bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] w-full">
           <section className="max-w-6xl mx-auto mt-20 flex justify-center items-center p-6 md:p-10 flex-col">
             {data.map((item, index) => {
               return (
@@ -68,21 +67,6 @@ const About = () => {
             })}
           </section>
         </section>
-        <div class="flex justify-around items-center">
-  <div class="mr-4">
-    <p class="font-mono text-2xl text-[#22668d] ">Join Our Community</p>
-  </div>
-  <div class="mb-2 mr-10 rounded-tr-lg rounded-bl-lg" style={{ backgroundColor: customBackgroundColor }}>
-    <div class="flex space-x-6 m-2 ">
-      <a href="#" class="text-white"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#" class="text-white"><i class="fa-brands fa-facebook"></i></a>
-      <a href="#" class="text-white"><i class="fa-brands fa-x-twitter"></i></a>
-      <a href="#" class="text-white"><i class="fa-brands fa-linkedin"></i></a>
-      <a href="#" class="text-white"><i class="fa-brands fa-youtube"></i></a>
-    </div>
-  </div>
-</div>
-
       </section>
     </main>
   );

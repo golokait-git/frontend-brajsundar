@@ -6,7 +6,7 @@ import { SlSocialVkontakte } from "react-icons/sl";
 const AboutSection = () => {
   const navigate = useRouter();
   return (
-    <main className="w-full bg-gradient-to-r from-[#f4e9d9] to-[#ffffff] font-serif">
+    <main className="w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] font-serif">
       <section className="max-w-[80%] flex flex-col lg:flex-row justify-center items-center mx-auto">
         <div className="w-full lg:w-[50%] flex justify-center lg:justify-start items-center lg:items-start flex-col">
           <Image

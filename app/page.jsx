@@ -12,7 +12,7 @@ import CourseSection from "../app/components/HomePage/Courses/CourseSection";
 
 const Home = () => {
   return (
-    <section className="bg-gradient-to-r from-[#f4e9d9] to-[#ffffff] flex justify-center items-center w-full flex-col scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100 mx-auto">
+    <section className="bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] flex justify-center items-center w-full flex-col scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100 mx-auto">
       <HeroSection />
       <AboutSection />
       <CourseSection />

@@ -1,4 +1,5 @@
 import "./globals.css";
+import PrelineScript from "./components/PrelineScript";
 import { Poppins } from "next/font/google";
 import NavbarSelector from "./navbar-selector";
 import Footer from "../app/components/Footer";
@@ -22,12 +23,13 @@ export default function RootLayout({ children }) {
         content="The urban spiritual leader | Author | Spiritual Relationship Coach | Global public speaker | Teacher of Bhāgavata knowledge"
       />
       <meta name="title" content="Brajsundar Das" />
-      <body className={poppins.className}>
+      <body className={`bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] ${poppins.className}`} >
         <NavbarSelector />
         {children}
         <Footer />
         <Toaster position="bottom-center" />
       </body>
+      <PrelineScript />
     </html>
   );
 }

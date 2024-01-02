@@ -24,7 +24,7 @@ const VideoSection = () => {
     VideoFetch();
   }, []);
   return (
-      <main className="w-full bg-[#f5f5f5]">
+      <main className="w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
           <section className="flex justify-center items-center flex-col max-w-6xl mx-auto my-10">
               <HomeTitle title="Video" link="/videos" />
               <div className="flex flex-wrap md:grid md:grid-cols-3 items-center gap-6 md:gap-4 mt-8 mb-10 w-[100%]">

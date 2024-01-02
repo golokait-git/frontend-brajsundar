@@ -25,7 +25,7 @@ const PodcastSection = () => {
   }, []);
 
   return (
-    <main className="w-full md:h-full bg-gradient-to-r from-[#f4e9d9] to-[#ffffff]">
+    <main className="w-full md:h-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
       <section className="flex md:justify-center items-center my-10 mx-auto max-w-6xl w-full flex-col">
         <HomeTitle title="Podcast" link="/podcast" />
         <div className="flex flex-wrap md:grid md:grid-cols-3 gap-5 mb-10 w-[90%] md:w-[100%]">
