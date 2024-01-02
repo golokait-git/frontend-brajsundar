@@ -16,6 +16,7 @@ const Navbar = () => {
       setActive("podcast");
     if (pathname === "/reels") setActive("reels");
     if (pathname === "/literature/books") setActive("books");
+    if (pathname === "/blogs") setActive("blogs");
     if (pathname === "/literature/emagazine") setActive("emagazine");
     if (pathname === "/literature/article") setActive("article");
     if (pathname === "/videos") setActive("videos");
@@ -140,7 +141,7 @@ const Navbar = () => {
                 Books
               </li>
             </Link>
-            <Link href={"https://brajsundardas.in/"}>
+            <Link href="/blogs">
               <li
                 className={`text-xl my-4 md:my-0 font-medium ${
                   active === "videos" && "border-b-2 border-[#1b4963]"
@@ -241,7 +242,7 @@ const Navbar = () => {
                   Books
                 </li>
               </Link>
-              <Link href={"https://brajsundardas.in/"} target="_blank">
+              <Link href="/blogs" target="_blank">
                 <li
                   className={`${
                     active === "blogs" && "text-[#1b4963]"

@@ -63,7 +63,7 @@ const Footer = () => {
             target="_blank"
             className="text-white font-medium tracking-wide text-xs md:text-base mt-2 md:mt-4 text-center"
           >
-            Developed By Karma Technologies
+            Developed By Goloka IT
           </a>
           <span
             className="hidden md:block absolute right-14 cursor-pointer bg-white p-2 rounded-full"

@@ -10,7 +10,6 @@ const CourseDetail = () => {
   const params = useParams();
   const [data, setData] = useState([]);
   const apiLink = `https://marriageacademy-api.edmingle.com/nuSource/api/v1/organization/bundles/${params.id}`;
-
   useEffect(() => {
     const CourseDetailHandler = async () => {
       try {
