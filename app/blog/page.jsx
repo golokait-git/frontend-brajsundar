@@ -13,6 +13,7 @@ const Blog = () => {
       title: "Srimad Bhagavatam is Life Saviour",
       description:
         "Every man should act like this: when he meets a person more qualified than himself, he should be very pleased; when he meets someone less qualified than himself, he should be compassionate toward him; and when he meets someone equal to himself, he should make friendship with him. In this way one is never affected by… read more",
+      date: "2nd December 2023, by Brajsundar Das"
     },
     {
       image: "blg2",
@@ -21,6 +22,7 @@ const Blog = () => {
       title: "Understanding the Tenth Canto Chronology",
       description:
         "Lord Kṛṣṇa, who appeared with Baladeva in the Yadu dynasty, performed His activities within this world. Kṛṣṇa is transcendental, and therefore to understand His activities is the occupation of liberated persons. Hearing of kṛṣṇa-līlā is the boat by which to achieve the ultimate goal of life. Except for an animal killer or one who is… read more.",
+      date: "2nd December 2023, by Brajsundar Das"
     },
     {
       image: "blg3",
@@ -29,6 +31,7 @@ const Blog = () => {
       title: "Diksa or Initiation, what it actually means",
       description:
         "Dīkṣā or initiation actually means to take a vow to chant the holy names of the Lord. This is the main rule; because by dint of His holy name alone can one attain the Supreme Lord. There is no other process prescribed in the scriptures. By chanting His holy names alone can one obtain Kṛṣṇa.… read more",
+      date: "2nd December 2023, by Brajsundar Das"
     },
     {
       image: "blg4",
@@ -37,6 +40,7 @@ const Blog = () => {
       title: "Understanding the Tenth Canto Chronology",
       description:
         "Śrīla Bhaktivinoda Ṭhākura envisioned the global spread of Lord Caitanya’s teachings, believing that the congregational chanting of the Supreme Lord’s divine names could unify diverse theories and religions... read more",
+      date: "2nd December 2023, by Brajsundar Das"
     },
     
   ];
@@ -54,6 +58,7 @@ const Blog = () => {
                   position={item.position}
                   title={item.title}
                   description={item.description}
+                  date={item.date}
                   image={item.image}
                 />
               );

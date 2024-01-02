@@ -242,7 +242,7 @@ const Navbar = () => {
                   Books
                 </li>
               </Link>
-              <Link href="/blogs" target="_blank">
+              <Link href="/blog">
                 <li
                   className={`${
                     active === "blogs" && "text-[#1b4963]"
