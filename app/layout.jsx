@@ -1,4 +1,5 @@
 import "./globals.css";
+import PrelineScript from "./components/PrelineScript";
 import { Poppins } from "next/font/google";
 import NavbarSelector from "./navbar-selector";
 import Footer from "../app/components/Footer";
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <Toaster position="bottom-center" />
       </body>
+      <PrelineScript />
     </html>
   );
 }

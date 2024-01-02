@@ -3,7 +3,6 @@ import Image from "next/image";
 import React from "react";
 
 const ImageDesc = (props) => {
- 
   return (
     <section
       id={props.id}
@@ -13,12 +12,14 @@ const ImageDesc = (props) => {
           : "flex-col-reverse md:flex-row"
       }`}
     >
-      <div className="w-[95%] md:w-[55%] flex justify-center items-start flex-col mt-8 md:mt-0">
+      <div className="w-[95%] md:w-[55%] flex justify-center items-start flex-col mt-8 md:mt-0 ">
         <p className="text-3xl md:text-4xl font-semibold text-[#22668D]">
           {props.title}
         </p>
 
-        <p className="md:text-lg mt-4 text-justify text-[#000000]">{props.description}</p>
+        <p className="md:text-lg mt-4 text-justify text-[#000000] ">{props.description}</p>
+        <p className=" text-right text-[#00000] w-full ">{props.date}</p>
+ 
       </div>
       <Image
         src={require(`../../../public/assets/${props.image}.jpg`)}
