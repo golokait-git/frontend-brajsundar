@@ -11,7 +11,7 @@ const Footer = () => {
   );
   if (!pathname.startsWith("/podcast/") && !pathname.match(re))
     return (
-      <footer className="bg-[#22668d] w-[80%] mx-auto font-serif">
+      <footer className="bg-[#22668d] w-full mx-auto font-serif">
         <section className="max-w-6xl mx-auto py-6 flex justify-center items-center flex-col relative">
           <ul className="md:flex justify-evenly items-center w-[80%] my-2 hidden">
             <Link href={"/academy"}>
