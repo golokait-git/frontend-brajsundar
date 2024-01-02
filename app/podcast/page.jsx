@@ -175,7 +175,7 @@ const Podcast = () => {
 
   
   return (
-    <main className="w-full bg-gradient-to-r from-[#f4e9d9] to-[#ffffff]">
+    <main className="w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
       <section className="max-w-6xl mx-auto mt-10 min-h-[100vh]">
         <div className="w-full font-serif">
           <div className="flex justify-between items-center md:mb-12 w-[80%] mx-auto md:w-[90%] md:mx-auto bg-[url('/assets/bg-line.png')] bg-contain bg-no-repeat bg-center">

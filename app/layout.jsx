@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         content="The urban spiritual leader | Author | Spiritual Relationship Coach | Global public speaker | Teacher of Bhāgavata knowledge"
       />
       <meta name="title" content="Brajsundar Das" />
-      <body className={`bg-gradient-to-r from-[#f4e9d9] to-[#ffffff] ${poppins.className}`} >
+      <body className={`bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] ${poppins.className}`} >
         <NavbarSelector />
         {children}
         <Footer />

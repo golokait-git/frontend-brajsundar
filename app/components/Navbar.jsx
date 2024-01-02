@@ -16,6 +16,7 @@ const Navbar = () => {
       setActive("podcast");
     if (pathname === "/reels") setActive("reels");
     if (pathname === "/literature/books") setActive("books");
+    if (pathname === "/blog") setActive("blogs");
     if (pathname === "/literature/emagazine") setActive("emagazine");
     if (pathname === "/literature/article") setActive("article");
     if (pathname === "/videos") setActive("videos");
@@ -35,7 +36,7 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <nav className="bg-gradient-to-r from-[#f4e9d9] to-[#ffffff] py-8 md:px-7 flex justify-between items-center w-full mx-auto z-50 relative select-none">
+    <nav className="bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] py-8 md:px-7 flex justify-between items-center w-full mx-auto z-50 relative select-none">
       <div className="w-full flex justify-between items-center max-w-6xl mx-auto">
         <div className="z-[120] flex mx-auto md:mx-0 md:w-[20%] w-[80%] justify-between items-center">
           <Link href={"/"}>
@@ -140,7 +141,7 @@ const Navbar = () => {
                 Books
               </li>
             </Link>
-            <Link href={"https://brajsundardas.in/"}>
+            <Link href={"/blog"}>
               <li
                 className={`text-xl my-4 md:my-0 font-medium ${
                   active === "videos" && "border-b-2 border-[#1b4963]"
@@ -241,7 +242,7 @@ const Navbar = () => {
                   Books
                 </li>
               </Link>
-              <Link href={"https://brajsundardas.in/"} target="_blank">
+              <Link href={"/blog"}>
                 <li
                   className={`${
                     active === "blogs" && "text-[#1b4963]"

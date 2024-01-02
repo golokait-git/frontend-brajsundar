@@ -25,7 +25,7 @@ const ReelsSection = () => {
     EMagazine();
   }, []);
   return (
-    <main className="w-full bg-[#fff]">
+    <main className="w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
       <section className="flex md:justify-center items-center my-10 mx-auto max-w-6xl w-full flex-col">
         <HomeTitle title="Reels" link="/reels" />
         <div className="flex flex-wrap justify-evenly items-center gap-y-8 md:gap-4 mt-6 mb-10 w-full">

@@ -2,6 +2,8 @@
 import { ChevronUp } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import { SlSocialVkontakte } from "react-icons/sl";
 import React from "react";
 
 const Footer = () => {
@@ -55,9 +57,63 @@ const Footer = () => {
               </span>
             </Link>
           </ul>
-          <p className="text-white tracking-wider font-medium md:text-xl md:mt-4 text-center">
+          <p className="text-white tracking-wider font-medium md:text-xl md:mt-4 md:mb-5 text-center">
             © 2023 Brajsundar Das. All Rights Reserved.
           </p>
+          <ul className="flex justify-evenly items-end mx-4 my-2">
+              <li
+                className="mx-2 cursor-pointer text-white scale-100 hover:scale-125 hover:transition-all hover:duration-200 "
+                onClick={() => {
+                  window.open("https://www.instagram.com/brajsundardas/");
+                }}
+              >
+                <Instagram size={20} />
+              </li>
+              <li
+                className="mx-2 cursor-pointer text-white scale-100 hover:scale-125 hover:transition-all hover:duration-200"
+                onClick={() => {
+                  window.open("https://www.facebook.com/brajsunderdas/");
+                }}
+              >
+                <Facebook size={20} />
+              </li>
+              <li
+                className="mx-2 cursor-pointer text-white scale-100 hover:scale-125 hover:transition-all hover:duration-200"
+                onClick={() => {
+                  window.open(
+                    "https://www.youtube.com/channel/UCBLLSfLYL8CYlwlUZkDtM4Q"
+                  );
+                }}
+              >
+                <Youtube size={20} />
+              </li>
+              <li
+                className="mx-2 cursor-pointer text-white scale-100 hover:scale-125 hover:transition-all hover:duration-200"
+                onClick={() => {
+                  window.open(
+                    "https://www.linkedin.com/in/brajsundar-das-444718186/"
+                  );
+                }}
+              >
+                <Linkedin size={20} />
+              </li>
+              <li
+                className="mx-2 cursor-pointer text-white scale-100 hover:scale-125 hover:transition-all hover:duration-200"
+                onClick={() => {
+                  window.open("https://twitter.com/Brajsunder_das");
+                }}
+              >
+                <Twitter size={20} />
+              </li>
+              <li
+                className="mx-2 cursor-pointer text-white scale-100 hover:scale-125 hover:transition-all hover:duration-200"
+                onClick={() => {
+                  window.open("https://vk.com/brajasundara");
+                }}
+              >
+                <SlSocialVkontakte size={20} />
+              </li>
+            </ul>
           <a
             href="https://karmatechnologies.in/"
             target="_blank"

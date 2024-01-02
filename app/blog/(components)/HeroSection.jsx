@@ -12,7 +12,7 @@ const HeroSection = () => {
         <Image
           src={require("../../../public/assets/blog.jpg")}
           alt="Image"
-          width={320}
+          width={410}
           height={300}
           className="rounded-lg bg-blend-normal"
         />

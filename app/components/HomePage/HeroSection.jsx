@@ -2,7 +2,7 @@ import { BsWhatsapp } from "react-icons/bs";
 import Image from "next/image";
 const HeroSection = () => {
   return (
-    <main className="max-w-[80%] font-serif w-full bg-gradient-to-r from-[#f4e9d9] to-[#ffffff]">
+    <main className="max-w-[80%] font-serif w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
       <div className=" flex flex-col-reverse lg:flex-row justify-center items-center mx-auto ">
         <div className="bg-[url('/assets/bg-line.png')] bg-cover bg-blend-color-dodge bg-no-repeat bg-center lg:w-[55%]">
           <div className="relative h-1/4 py-5"><h3 className="text-xl absolute bottom-7">Welcome To Brajasundara</h3></div>

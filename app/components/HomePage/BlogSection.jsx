@@ -3,7 +3,7 @@ import React from "react";
 import HomeTitle from "../HomeTitle";
 const BlogSection = () => {
   return (
-    <main className="bg-gradient-to-r from-[#f4e9d9] to-[#ffffff] w-full font-serif ">
+    <main className="bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] w-full font-serif ">
       {/* <div className="flex md:justify-center items-center my-10 mx-auto max-w-6xl w-full flex-col"> */}
       {/* <HomeTitle title="Blogs" link="https://brajsundardas.in/" disableButton={true} /> */}
 
