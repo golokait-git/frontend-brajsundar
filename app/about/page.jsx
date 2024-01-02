@@ -4,7 +4,6 @@ import HeroSection from "./(components)/HeroSection";
 import ImageDesc from "./(components)/ImageDesc";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 const About = () => {
-  
   const data = [
     {
       image: "ab1",
