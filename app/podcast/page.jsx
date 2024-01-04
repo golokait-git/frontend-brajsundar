@@ -5,10 +5,6 @@ import PodcastCard from "../components/HomePage/Podcast/PodcastCard";
 import Image from "next/image";
 import {
   ChevronDown,
-  ChevronDownSquare,
-  ChevronLeft,
-  ChevronRight,
-  Search,
   X,
 } from "lucide-react";
 import { Oval } from "react-loader-spinner";
@@ -29,14 +25,6 @@ const Podcast = () => {
   const [dictinctCategory, setAllDictinctCategory] = useState();
   const inputRef = useRef(null);
   useEffect(() => {
-    if (search.trim() !== '') {
-      searchHandler();
-    } else if (search.trim() === '') {
-      searchResetHandler();
-      
-    } else {
-      simulateEnter();
-    };
     const fetchPodcasts = async () => {
       setLoading(true);
       try {
@@ -60,12 +48,29 @@ const Podcast = () => {
       }
     };
     fetchPodcasts();
-  },[search], [currentPage]);
+  }, [currentPage]);
+
+  // useEffect for search
+
+  useEffect(() => {
+    if (search.trim() !== '') {
+      searchHandler();
+    } else if (search.trim() === '') {
+      searchResetHandler();
+      
+    } else {
+      simulateEnter();
+    };
+  }, [search]);
 
   const indexOfLastPodcast = currentPage * podcastPerPage;
+  const indexOfFirstPodcast = indexOfLastPodcast - podcastPerPage;
   const currentPodcasts = searchActive
     ? searchData
     : podcasts.slice(0, indexOfLastPodcast);
+
+  // Calculate the total number of pages
+  const totalPages = Math.ceil((searchActive ? searchData.length : totalPodcasts) / podcastPerPage);
   
 
   const searchHandler = async (e) => {
@@ -229,8 +234,8 @@ const Podcast = () => {
               )}
             </div>
             {/* new search */}
-            <div class=" w-[90%] md:w-[5%]">
-              <form action="" class="relative mx-auto w-max" onSubmit={handleSubmit}>
+            <div className=" w-[90%] md:w-[5%]">
+              <form action="" className="relative mx-auto w-max" onSubmit={handleSubmit}>
                 <input
                   type="search"
                   name="search"
@@ -239,12 +244,12 @@ const Podcast = () => {
                   onChange={(e) => setSearch(e.target.value)}
                   ref={inputRef}
                   placeholder="Search Podcast"
-                  class="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border-slate-500 border focus:bg-white bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-[#22668d] focus:pl-16 focus:pr-4"
+                  className="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border-slate-500 border focus:bg-white bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-[#22668d] focus:pl-16 focus:pr-4"
                 />
                 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="absolute inset-y-0 my-auto h-12 w-full border-2 border-white rounded-full pr-3 bg-[#22668d] focus:stroke-[#22668d] stroke-white px-3.5 peer-focus:border-[#22668d] peer-focus:stroke-[#22668d]"
+                  className="absolute inset-y-0 my-auto h-12 w-full border-2 border-white rounded-full pr-3 bg-[#22668d] focus:stroke-[#22668d] stroke-white px-3.5 peer-focus:border-[#22668d] peer-focus:stroke-[#22668d]"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
