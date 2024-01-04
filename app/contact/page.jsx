@@ -43,41 +43,43 @@ const Contact = () => {
   };
 
   return (
-    <main className="w-full bg-[#142834]">
-      <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
-        <p className="text-4xl text-[#fff] font-semibold text-center py-12">
+    <main className="w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] ">
+      <section className="max-w-6xl mx-auto flex justify-center items-center flex-col mt-8">
+        <p className=" flex justify-center text-[#22668d] text-5xl font-serif shadow-lg -shadow-md shadow-[#22668d] bg-white rounded-bl-2xl rounded-tr-2xl w-80">
           Get In Touch
         </p>
         <form
-          className="flex justify-center items-center flex-col w-[90%] md:w-[35%] mx-auto"
+          className="flex justify-center items-center flex-col w-80 mx-auto"
           onSubmit={onSubmit}
         >
-          <div className="w-full flex justify-center items-start flex-col my-2">
-            <label htmlFor="name" className="text-white/80">
+          <div className="w-full flex justify-center items-start flex-col mt-11">
+            <label htmlFor="name" className="text-[#22668d] font-serif ml-3 mb-5">
               Name
             </label>
             <input
               type="text"
               name="name"
-              className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+              className="w-full bg-transparent bg-white py-2 px-3 border-[1.5px] border-dashed rounded-bl-2xl rounded-tr-2xl border-[#22668d] text-black caret-black outline-none rounded mb-4 "
               onChange={onValueChange}
               value={data.name}
+              placeholder="Your Name"
             />
           </div>
           <div className="w-full flex justify-center items-start flex-col my-2">
-            <label htmlFor="email" className="text-white/80">
-              Email
+            <label htmlFor="email" className="text-[#22668d] font-serif ml-3 mb-5">
+              Email ID
             </label>
             <input
               type="email"
               name="email"
-              className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+              className="w-full bg-transparent bg-white py-2 px-3 border-[1.5px] border-dashed rounded-bl-2xl rounded-tr-2xl border-[#22668d] text-black caret-black outline-none rounded"
               onChange={onValueChange}
               value={data.email}
+              placeholder="example@email.com"
             />
           </div>
           <div className="w-full flex justify-center items-start flex-col my-2">
-            <label htmlFor="message" className="text-white/80">
+            <label htmlFor="message" className="text-[#22668d] font-serif ml-3 mb-5">
               Message
             </label>
             <textarea
@@ -85,20 +87,21 @@ const Contact = () => {
               id="message"
               cols="30"
               rows="4"
-              className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+              className="w-full bg-white py-2 px-3 mb-5 border-[1.5px] border-dashed rounded-bl-2xl rounded-tr-2xl border-[#22668d] text-black caret-black outline-none rounded resize-none"
               onChange={onValueChange}
               value={data.message}
+              placeholder="Thank You"
             ></textarea>
           </div>
           <button
-            className="bg-white text-[#142834] font-semibold px-6 py-2 my-6 rounded"
+            className=" text-white font-serif p-1  bg-[#22668d] rounded-bl-xl rounded-tr-xl w-20 transform transition duration-300 hover:scale-110"
             type="submit"
           >
-            Submit Now
+            Submit
           </button>
         </form>
         <div className="mb-10 mt-6 text-center w-[90%] md:w-full">
-          <p className="text-white my-3">
+          <p className="text-[#22668d] my-3">
             Reach out to Brajsundar Das at the following
             <br />
             <a
@@ -106,12 +109,11 @@ const Contact = () => {
               href="mailto:bdas@brajsundar.com"
             >
               <span className="mr-2">
-                <Mail size={20} />
               </span>
               bdas@brajsundar.com
             </a>
           </p>
-          <p className="text-white my-3">
+          <p className="text-[#22668d] my-3">
             To schedule appointments and make bookings, contact
             <br />
             <a
@@ -119,12 +121,11 @@ const Contact = () => {
               href="mailto:admin@brajsundar.com"
             >
               <span className="mr-2">
-                <Mail size={20} />
               </span>
               admin@brajsundar.com
             </a>
           </p>
-          <p className="text-white my-3">
+          <p className="text-[#22668d] my-3">
             For inquiries related to media and promotions, please email
             <br />
             <a
@@ -132,7 +133,6 @@ const Contact = () => {
               href="mailto:media@brajsundar.com"
             >
               <span className="mr-2">
-                <Mail size={20} />
               </span>
               media@brajsundar.com
             </a>

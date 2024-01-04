@@ -1,8 +1,19 @@
 "use client";
 import Image from "next/image";
 import React from "react";
+import { useState } from "react";
+import Modal from "./Modal";
 
-const ImageDesc = (props) => {
+const ImageDesc = (props) => {  
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
  
   return (
     <section
@@ -14,12 +25,19 @@ const ImageDesc = (props) => {
       }`}
     >
       <div className="w-[95%] md:w-[55%] flex justify-center items-start flex-col mt-8 md:mt-0">
-        <p className="text-3xl md:text-4xl font-semibold text-[#22668D]">
-          {props.title}
-        </p>
-
-        <p className="md:text-lg mt-4 text-justify text-[#000000] ">{props.description}</p>
-      </div>
+      <p className="text-3xl md:text-4xl font-semibold text-[#22668D]">
+        {props.title}
+      </p>
+      <p className="md:text-lg mt-4 text-justify text-[#000000]">
+        {props.description}
+        <button onClick={openModal} className=" text-[#22668D]">
+          read more
+        </button>
+      </p>
+      {modalOpen && (
+        <Modal title={props.title} description={props.description} closeModal={closeModal} />
+      )}
+    </div>
       <Image
         src={require(`../../../public/assets/${props.image}.jpg`)}
         alt="My Photo"
