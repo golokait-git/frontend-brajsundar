@@ -29,6 +29,14 @@ const Podcast = () => {
   const [dictinctCategory, setAllDictinctCategory] = useState();
   const inputRef = useRef(null);
   useEffect(() => {
+    if (search.trim() !== '') {
+      searchHandler();
+    } else if (search.trim() === '') {
+      searchResetHandler();
+      
+    } else {
+      simulateEnter();
+    };
     const fetchPodcasts = async () => {
       setLoading(true);
       try {
@@ -52,33 +60,15 @@ const Podcast = () => {
       }
     };
     fetchPodcasts();
-  }, [currentPage]);
+  },[search], [currentPage]);
 
   const indexOfLastPodcast = currentPage * podcastPerPage;
-  const indexOfFirstPodcast = indexOfLastPodcast - podcastPerPage;
   const currentPodcasts = searchActive
     ? searchData
     : podcasts.slice(0, indexOfLastPodcast);
-  const totalPages = Math.ceil(
-    (searchActive ? searchData.length : totalPodcasts) / podcastPerPage
-  );
-
-  // const prevPage = () => {
-  //   if (currentPage > 1) {
-  //     setCurrentPage(currentPage - 1);
-  //   }
-  // };
-
-  // const nextPage = () => {
-  //   if (currentPage < totalPages) {
-  //     setCurrentPage(currentPage + 1);
-  //   }
-  // };
-
-  // const showPagination = totalPodcasts > podcastPerPage;
+  
 
   const searchHandler = async (e) => {
-    // e.preventDefault();
     if (search) {
       setSearchActive(true);
       setLoading(true);
@@ -115,7 +105,7 @@ const Podcast = () => {
     try {
       const podcastResponse = await axios.get(`api/podcast`);
       const allPodcasts = podcastResponse.data.items;
-      setAllPodcast(allPodcasts);
+      setAllPodcast(allPodcast);
 
       const adminPodcastResponse = await axios.get(`${apiLink}/podcast`);
       const adminPodcasts = adminPodcastResponse.data.podcast;
@@ -162,17 +152,33 @@ const Podcast = () => {
   const loadMoreHandler = () => {
     setCurrentPage(currentPage + 1);
   };
-
-
+// handleSubmit function
   const handleSubmit = (e) => {
     e.preventDefault();
     if (search.trim() !== '') {
       searchHandler();
-    } else {
+    } else if (search.trim() === '') {
       searchResetHandler();
+      
+    } else {
+      simulateEnter();
     }
   };
-
+// simulateEnter function
+  const simulateEnter = () => {
+    
+    const event = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      code: 'Enter',
+      which: 13,
+      keyCode: 13,
+      bubbles: true,
+    });
+    if (inputRef.current) {
+    inputRef.current.dispatchEvent(event);
+    
+  }
+};
   
   return (
     <main className="w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
@@ -191,35 +197,6 @@ const Podcast = () => {
             </div>
           </div>
           <div className="flex justify-between items-center my-5 md:mb-12 w-full md:w-[90%] md:mx-auto md:flex-row-reverse flex-col">
-            {/* <form
-              className="flex justify-center items-center border-2 w-[90%] md:w-[30%] border-[#22668d] rounded-md md:mb-0 mb-4"
-              onSubmit={searchHandler}
-            >
-              <input
-                type="text"
-                name="search"
-                id="search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="px-2 py-1 h-10 outline-none w-full rounded-md"
-                placeholder="Search Podcast"
-              />
-              {searchActive ? (
-                <button
-                  className="bg-[#22668d] px-3 py-2"
-                  onClick={searchResetHandler}
-                >
-                  <X color="white" />
-                </button>
-              ) : (
-                <button
-                  className="bg-[#22668d] px-3 py-2"
-                  onClick={searchHandler}
-                >
-                  <Search color="white" />
-                </button>
-              )}
-            </form> */}
             <div className="flex justify-center relative items-center border-2 border-[#22668d] rounded-md w-[90%] md:w-[20%] mb-8 md:mb-0">
               <select
                 id="select"
@@ -260,14 +237,14 @@ const Podcast = () => {
                   id="search"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  
+                  ref={inputRef}
                   placeholder="Search Podcast"
-                  class="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border-slate-500 border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-[#22668d] focus:pl-16 focus:pr-4"
+                  class="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border-slate-500 border focus:bg-white bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-[#22668d] focus:pl-16 focus:pr-4"
                 />
                 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500  px-3.5 peer-focus:border-[#22668d] peer-focus:stroke-[#22668d]"
+                  class="absolute inset-y-0 my-auto h-12 w-full border-2 border-white rounded-full pr-3 bg-[#22668d] focus:stroke-[#22668d] stroke-white px-3.5 peer-focus:border-[#22668d] peer-focus:stroke-[#22668d]"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
