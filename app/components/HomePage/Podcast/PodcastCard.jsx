@@ -147,27 +147,25 @@ const PodcastCard = (props) => {
 
       {isModalOpen ? (
         <>
-        <div className="justify-center items-center flex mx-auto h-full fixed overflow-x-hidden overflow-y-auto inset-0 z-50 bg-[url('/assets/popup-bg.png')] bg-contain bg-no-repeat bg-center">
-          <div className="relative   my-auto md:h-auto w-[40%] ">
+        <div className="justify-center items-center flex  h-full fixed overflow-x-hidden overflow-y-auto inset-0 z-50 md:bg-[url('/assets/popup-bg.png')] md:bg-contain md:bg-no-repeat md:bg-center">
+          <div className="flex flex-row justify-between md:w-[37%] w-full">
             <button
-              className="bg-transparent  top-0 h-7"
+              className="bg-transparent md:mr-5 w-7 top-0 h-7"
               type="button"
               onClick={() => setIsModalOpen(false)}
             >
               <img src="/assets/arrow-icon.png" className="w-7 h-7  " />
             </button>
-            <div className=" rounded-bl-3xl rounded-tr-3xl shadow-lg relative flex flex-col mx-auto mb-10  md:w-[60%]  bg-white">
-              <div className="flex flex-col items-start justify-between w-[80%] mx-auto">
+            <div className=" rounded-bl-3xl rounded-tr-3xl shadow-lg shadow-black   md:w-[70%] w-[90%]   bg-white">
+              <div className=" w-[80%] h-full mx-auto flex flex-col justify-evenly">
                 <img
                   src={`${props.data.itunes_image.href}`}
-                  className="w-52 mx-auto rounded-bl-3xl rounded-tr-3xl shadow-lg shadow-[#22668d] my-8"
+                  className="w-[70%] mx-auto rounded-bl-3xl rounded-tr-3xl shadow-lg shadow-[#22668d] mt-4"
                 />
-                <h3 className="text-md text-justify">{props.data.title}</h3>
-              </div>
-              <div className="relative flex-auto w-[80%] mx-auto">
-                <div className="w-full h-10 my-2">
+                <h3 className="text-sm text-justify my-4">{props.data.title}</h3>
+                <div className="w-full h-10 my-4">
                   <audio ref={audioRef} src={props.data.enclosures[0].url}></audio>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between h-5">
                       <div className="w-11 text-xs text-center bottom-0">
                         {formatTime(currentTime)}
                       </div>
@@ -180,7 +178,7 @@ const PodcastCard = (props) => {
                        {formatTime(itunesDuration)}
                       </div>
                   </div>
-                  <div className="w-full">
+                  <div className="w-full h-0">
                     <input
                       type="range"
                       min="0"
@@ -192,9 +190,9 @@ const PodcastCard = (props) => {
                     />
                   </div>
                 </div>
-                <p className="my-6 text-xs leading-relaxed overflow-hidden h-auto">
+                <p className="mb-4 text-xs text-justify  ">
                   {props.data.description.length > 150
-                    ? props.data.description.slice(3, 350) + "..."
+                    ? props.data.description.slice(3, 150) + "..."
                     : props.data.description}
                 </p>
               </div>
