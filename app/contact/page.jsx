@@ -4,6 +4,7 @@ import { Mail } from "lucide-react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
+
 const Contact = () => {
   const [data, setData] = useState({
     name: "",
@@ -45,6 +46,7 @@ const Contact = () => {
   return (
     <main className="w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] ">
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col mt-8">
+      {/* style={{ backgroundImage:'url("/assets/bg-form.jpg")'}} */}
         <p className=" flex justify-center text-[#22668d] text-5xl font-serif shadow-lg -shadow-md shadow-[#22668d] bg-white rounded-bl-2xl rounded-tr-2xl w-80">
           Get In Touch
         </p>

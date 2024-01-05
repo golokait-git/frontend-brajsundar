@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navigation = [
-  { name: "Home", href: "/academy", current: true },
   { name: "Courses", href: "/academy/courses", current: false },
   { name: "Workshop", href: "/academy/workshop", current: false },
   { name: "Coaching", href: "/academy/coaching", current: false },
@@ -23,7 +22,7 @@ export default function Navbar() {
   });
 
   return (
-    <Disclosure as="nav" className="bg-white z-10 relative shadow">
+    <Disclosure as="nav" className="bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5] z-10 relative">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -42,26 +41,27 @@ export default function Navbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
+                  <div>
                     <Link href={"/"}>
                       <Image
-                        src={require("../../../public/assets/logo.png")}
+                        src={require("../../../public/assets/brajsundar-logo.png")}
                         alt="logo"
                         width={100}
-                        className="saturate-150 h-[36px] object-contain "
+                        className="saturate-150 h-[36px] object-contain flex mr-80 ml-8"
                       />
                     </Link>
+                    </div>
                     {navigation.map((item) => (
                       <Link legacyBehavior href={item.href} key={item.name}>
                         <span
                           id="link"
                           className={classNames(
-                            item.current
-                              ? "bg-[#22668d36] text-[#22668d]"
-                              : "text-gray-900 hover:bg-[#22668d36] hover:text-[#22668d]",
-                            "rounded-md px-3 py-2 text-sm font-medium cursor-pointer"
-                          )}
-                          aria-current={item.current ? "page" : undefined}
-                        >
+                                    item.current
+                                       ? "bg-[#22668d36] text-[#22668d]"
+                                       : "text-[#22668d]",
+                                       "rounded-md px-3 py-2 text-lg font-serif cursor-pointer"
+                                    )}
+                          aria-current={item.current ? "page" : undefined}>
                           {item.name}
                         </span>
                       </Link>
@@ -72,10 +72,10 @@ export default function Navbar() {
 
               {/* {sdkLoaded && ( */}
               <div className="gap-2 flex">
-                <button className="loginButton login text-[#22668d] font-medium px-5 py-[6px] text-sm rounded-md border-2 border-[#22668d]">
+                <button className=" text-white font-serif p-1  bg-[#22668d]  w-20 transform transition duration-300 hover:scale-110">
                   Sign In
                 </button>
-                <button className="loginButton signup text-white font-medium px-5 py-[6px] text-sm rounded-md bg-[#22668d]">
+                <button className=" bg-white font-serif py-1 px-3 border-[1.5px] border-dashed rounded-bl-2xl rounded-tr-2xl border-[#22668d] text-[#22668d] transform transition duration-300 hover:scale-110">
                   Sign Up
                 </button>
                 <button

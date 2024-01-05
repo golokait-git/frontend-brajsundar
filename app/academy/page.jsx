@@ -8,7 +8,6 @@ import {
 import CourseCard from "./(components)/CourseCard";
 import CourseSectionTitle from "./CourseSectionTitle";
 import { Oval } from "react-loader-spinner";
-import doodleBackground from "../../public/assets/doodle_bg.png";
 import Wrapper from "../Wrapper";
 const CourseList = () => {
   const [courseData, setCourseData] = useState([]);
@@ -39,14 +38,14 @@ const CourseList = () => {
   return (
     <Wrapper>
       <section
-        className={`bg-doodle bg-opacity-50`}
+        className="bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]"
         style={{
-          backgroundImage: `url(${doodleBackground})`,
           width: "100%",
         }}
       >
+      <h1 className="text-center text-3xl mt-10 font-serif text-[#22668d]">Academy</h1>
         {courseData && workshopData && coachingData && (
-          <div className="mx-auto flex flex-col items-center justify-between w-[100%] max-w-6xl">
+          <div className="mx-auto flex flex-col items-center justify-between w-[80%] max-w-6xl">
             <section className="text-gray-600 body-font overflow-hidden w-full">
               <div className="py-12 w-full min-h-[80vh]">
                 {courseData.length === 0 &&

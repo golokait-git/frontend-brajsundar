@@ -4,8 +4,7 @@ const CourseCard = (props) => {
   return (
     <Link
       href={`/academy/course-detail/${props.courseData.institution_bundle_id}`}
-      className="w-[90%] md:w-full mx-auto rounded-md overflow-hidden shadow-md bg-white my-4 cursor-pointer flex justify-start flex-col items-start"
-      target="_blank"
+      className="w-[90%] md:w-full mx-auto overflow-hidden shadow-md bg-white my-4 cursor-pointer flex justify-start flex-col items-start rounded-bl-3xl rounded-tr-3xl"
     >
       <img className="w-full h-3/6" alt="Card" src={props.courseData.img_url} />
       <div className="px-6 py-4">

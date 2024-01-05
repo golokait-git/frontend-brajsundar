@@ -4,10 +4,10 @@ const CourseSectionTitle = ({ title, onViewAll }) => {
   return (
     <div className="flex justify-between items-center w-[90%] mx-auto md:w-full">
       <>
-        <p className="text-black font-semibold text-[32px]">{title}</p>
+        <p className="text-[#22668d] font-serif text-[32px]">{title}</p>
         <Link href={`/academy/${title.toLowerCase()}`}>
           <button
-            className="bg-[#22668d] text-[#fff] font-medium px-4 py-[6px] rounded-md"
+            className=" text-white font-serif p-1  bg-[#22668d] rounded-bl-2xl w-20 rounded-tr-2xl"
             onClick={onViewAll}
           >
             View All
