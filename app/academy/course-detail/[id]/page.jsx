@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Wrapper from "../../../Wrapper";
 import { LiaCertificateSolid } from "react-icons/lia";
 import Loader from "../../(components)/Loader";
+import Review from "../../../components/Review"
 
 const CourseDetail = () => {
   const params = useParams();
@@ -15,6 +16,7 @@ const CourseDetail = () => {
       try {
         const response = await axios.get(apiLink);
         setData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -72,31 +74,36 @@ const CourseDetail = () => {
     <Wrapper>
       <section>
         {data?.bundle && (
-          <section className="w-full">
-            <div className="bg-cover bg-center w-full py-14 bgImage bg-details-bg">
-              <div className="mx-auto max-w-6xl z-20">
-                <div className="w-full flex justify-center items-center flex-col md:items-start">
-                  <p className="text-white text-center md:text-left font-semibold md:font-bold text-2xl md:text-4xl mb-4 w-full">
+          <section className="w-[80%] mx-auto">
+            <div className=" w-full py-14 ">
+              <div className="mx-auto flex max-w-[95%] z-20">
+                <div className="w-full flex justify-between items-center md:items-start font-serif flex-col">
+                  <p className="text-[#22668d] rounded-tr-2xl rounded-bl-2xl bg-white text-start md:text-left px-2 py-1 shadow-md shadow-[#22668d] text-2xl md:text-3xl">
                     {data.bundle.bundle_name}
                   </p>
-                  <p className="text-white text-center md:text-left md:font-medium text-base md:text-xl mb-4 w-full">
+                  <p className="text-black text-center md:text-left md:font-medium text-base md:text-md mb-4 w-full">
                     {data.bundle.bundle_description}
                   </p>
-                  <p className="text-white text-center md:text-left font-medium md:font-semibold text-lg md:text-2xl mb-5 w-full">
-                    {data.bundle.currency_symbol} {data.bundle.cost}
-                  </p>
+                  <ul className="list-inside list-image-[url(/assets/lang-icon.png)] text-black text-center md:text-left align-middle text-sm h-4">
+                  <li className="h-4">
+                  Taught in {data.tags[1].value[0]}
+                  </li>
+                  </ul>
                   {findTagValue(data.tags, 273) == "true" && (
-                    <p className="flex text-sm justify-start items-center from-yellow-600 to-yellow-500 shadow-md shadow-yellow-500/30 bg-gradient-to-tr px-3 py-1 rounded-full text-black mb-5">
-                      <LiaCertificateSolid className="text-xl mr-1" />
-                      Certificate Course
+                    <p className=" text-sm justify-start items-center text-black">
+                      
+                      Instructor: Brajsundar Das
                     </p>
                   )}
                   <a
-                    className={`bg-[#3c789a]  shadow-[#3c789a30] select-none shadow-md text-[#fff] font-medium text-lg px-8 py-2 rounded-md cursor-pointer course-landing-buy_${data.bundle.institution_bundle_id} z-50`}
+                    className={`bg-[#3c789a] select-none text-[#fff] font-bold text-md px-2 py-2 rounded-tr-2xl rounded-bl-2xl scale-100 hover:scale-105 hover:transition-all hover:duration-200 cursor-pointer course-landing-buy_${data.bundle.institution_bundle_id} z-50`}
                     data-instbundleid={data.bundle.institution_bundle_id}
                   >
-                    Enroll Now
+                    Enroll Now at {data.bundle.currency_symbol} {data.bundle.cost}
                   </a>
+                </div>
+                <div className="w-[80%] my-auto">
+                  <img src={data.bundle.img_url} className="h-full rounded-tr-3xl rounded-bl-3xl shadow-[#22668d] shadow-xl"/>
                 </div>
               </div>
             </div>
@@ -119,13 +126,13 @@ const CourseDetail = () => {
               <div className="py-10 w-full">
                 <div className="max-w-6xl mx-auto w-[90%] md:w-full">
                   <p className="font-bold mx-auto text-2xl md:text-3xl mb-6">
-                    Course Overview
+                  What's this course about?
                   </p>
                   <div
                     className={`mx-auto text-black para`}
                     dangerouslySetInnerHTML={{
                       __html: data.bundle.bundle_overview.replaceAll(
-                        "font-family: Arial",
+                        "font-family: serif",
                         ""
                       ),
                     }}
@@ -140,6 +147,7 @@ const CourseDetail = () => {
             <Loader />
           </div>
         )}
+        <Review/>
       </section>
     </Wrapper>
   );

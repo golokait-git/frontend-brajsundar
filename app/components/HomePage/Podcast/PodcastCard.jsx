@@ -203,7 +203,7 @@ const PodcastCard = (props) => {
                       {props.data.description.length > 300
                         ? props.data.description.slice(3, 300) + "..."
                         : props.data.description}
-                      <span onClick={() => setExpanded(!expanded)} >
+                      <span className="text-[#22668d] cursor-pointer" onClick={() => setExpanded(!expanded)} >
                         <b>Read More</b>
                       </span>
                       </div>

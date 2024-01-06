@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 import { SlSocialVkontakte } from "react-icons/sl";
 import React from "react";
+import Image from "next/image";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -16,6 +17,15 @@ const Footer = () => {
       <footer className="bg-[#22668d] w-full mx-auto font-serif">
         <section className="max-w-6xl mx-auto py-6 flex justify-center items-center flex-col relative">
           <ul className="md:flex justify-evenly items-center w-[80%] my-2 hidden">
+          <Link href={"/"}>
+            <Image
+              src={require("../../public/assets/brajsundar-logo-light.png")}
+              alt="logo"
+              height={50}
+              width={100}
+              className=" h-[40px] object-contain"
+            />
+          </Link>
             <Link href={"/academy"}>
               <span className="text-white text-sm cursor-pointer tracking-wide scale-100 hover:scale-125 hover:transition-all hover:duration-200">
                 Academy

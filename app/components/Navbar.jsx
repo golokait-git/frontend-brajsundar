@@ -43,8 +43,9 @@ const Navbar = () => {
             <Image
               src={require("../../public/assets/brajsundar-logo.png")}
               alt="logo"
+              height={50}
               width={100}
-              className="saturate-150 h-[40px] object-contain bg-blend-lighten"
+              className="h-[40px] object-contain "
             />
           </Link>
           <div className="md:hidden" onClick={toggleMenu}>
