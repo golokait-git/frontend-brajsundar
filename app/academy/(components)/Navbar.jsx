@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navigation = [
+  { name: "Academy", href: "/academy", current: false },
   { name: "Courses", href: "/academy/courses", current: false },
   { name: "Workshop", href: "/academy/workshop", current: false },
   { name: "Coaching", href: "/academy/coaching", current: false },
@@ -47,7 +48,7 @@ export default function Navbar() {
                         src={require("../../../public/assets/brajsundar-logo.png")}
                         alt="logo"
                         width={100}
-                        className="saturate-150 h-[36px] object-contain flex mr-80 ml-8"
+                        className="saturate-150 mt-1 h-[36px] object-contain mr-56 ml-8"
                       />
                     </Link>
                     </div>
@@ -57,7 +58,7 @@ export default function Navbar() {
                           id="link"
                           className={classNames(
                                     item.current
-                                       ? "bg-[#22668d36] text-[#22668d]"
+                                       ? "text-[#22668d]"
                                        : "text-[#22668d]",
                                        "rounded-md px-3 py-2 text-lg font-serif cursor-pointer"
                                     )}

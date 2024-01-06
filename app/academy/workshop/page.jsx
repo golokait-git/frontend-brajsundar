@@ -46,7 +46,7 @@ const Workshop = () => {
         handleSearch={handleSearch}
         title={"Workshop"}
       />
-      <section className="text-gray-600 body-font min-h-screen w-full bg-[#f5f5f5]">
+      <section className="bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
         {loading ? (
           <Loader />
         ) : filteredWorkshopData.length === 0 ? (

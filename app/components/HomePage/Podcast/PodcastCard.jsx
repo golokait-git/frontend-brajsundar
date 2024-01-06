@@ -210,7 +210,9 @@ const PodcastCard = (props) => {
                     ):null}
                     {expanded ? (
                       <div onClick={() => setExpanded(false)}>
-                        {props.data.description}
+                      {props.data.description.length > 700
+                        ? props.data.description.slice(3, 700) + "..."
+                        : props.data.description}
                       </div>
                     ) : null}
                   </div>
@@ -218,7 +220,6 @@ const PodcastCard = (props) => {
               </div>
             </div>
           </div>
-
           <div className="opacity-80 fixed inset-0 z-40 bg-black"> </div>
         </>
       ) : null}
