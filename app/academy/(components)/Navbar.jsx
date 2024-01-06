@@ -72,7 +72,7 @@ export default function Navbar() {
 
               {/* {sdkLoaded && ( */}
               <div className="gap-2 flex">
-                <button className=" text-white font-serif p-1  bg-[#22668d]  w-20 transform transition duration-300 hover:scale-110">
+                <button className=" text-white font-serif p-1  bg-[#22668d] rounded-bl-2xl rounded-tr-2xl w-20 transform transition duration-300 hover:scale-110">
                   Sign In
                 </button>
                 <button className=" bg-white font-serif py-1 px-3 border-[1.5px] border-dashed rounded-bl-2xl rounded-tr-2xl border-[#22668d] text-[#22668d] transform transition duration-300 hover:scale-110">
