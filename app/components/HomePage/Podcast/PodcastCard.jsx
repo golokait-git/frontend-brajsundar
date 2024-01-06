@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import { Pause, Play } from "lucide-react";
 
 const PodcastCard = (props) => {
+  const [expanded, setExpanded] = useState(false);
+
   // click handling
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleCardClick = () => {
@@ -58,10 +58,11 @@ const PodcastCard = (props) => {
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = Math.floor(timeInSeconds % 60);
-    const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
+      seconds
+    ).padStart(2, "0")}`;
     return formattedTime;
   };
-  
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -83,7 +84,7 @@ const PodcastCard = (props) => {
     const newTime = parseFloat(e.target.value);
     setCurrentTime(newTime);
     audioRef.current.currentTime = newTime;
-  
+
     if (!audioRef.current.paused) {
       audioRef.current.play().catch((error) => {
         console.error("Error while attempting to play audio:", error);
@@ -95,7 +96,7 @@ const PodcastCard = (props) => {
     const audio = audioRef.current;
 
     if (audio.paused || audio.ended) {
-      audio.play().catch(error => {
+      audio.play().catch((error) => {
         console.error("Error while attempting to play audio:", error);
       });
     } else {
@@ -114,7 +115,7 @@ const PodcastCard = (props) => {
   // };
 
   let newData = new Date(props?.data?.published).toLocaleString();
-   return (
+  return (
     <>
       <button
         className={`overflow-hidden flex flex-col justify-between bg-white shadow-lg border border-[#22668d] rounded-bl-3xl rounded-tr-3xl cursor-pointer scale-100 hover:scale-105 transition-all hover:transition-all duration-200 mx-auto hover:duration-200 shadow-[#22668d] hover:shadow-[#22668d] hover:shadow-xl ${
@@ -147,65 +148,82 @@ const PodcastCard = (props) => {
 
       {isModalOpen ? (
         <>
-        <div className="justify-center items-center flex  h-full fixed overflow-x-hidden overflow-y-auto inset-0 z-50 md:bg-[url('/assets/popup-bg.png')] md:bg-contain md:bg-no-repeat md:bg-center">
-          <div className="flex flex-row justify-between md:w-[37%] w-full">
-            <button
-              className="bg-transparent md:mr-5 w-7 top-0 h-7"
-              type="button"
-              onClick={() => setIsModalOpen(false)}
-            >
-              <img src="/assets/arrow-icon.png" className="w-7 h-7  " />
-            </button>
-            <div className=" rounded-bl-3xl rounded-tr-3xl shadow-lg shadow-black   md:w-[70%] w-[90%]   bg-white">
-              <div className=" w-[80%] h-full mx-auto flex flex-col justify-evenly">
-                <img
-                  src={`${props.data.itunes_image.href}`}
-                  className="w-[70%] mx-auto rounded-bl-3xl rounded-tr-3xl shadow-lg shadow-[#22668d] mt-4"
-                />
-                <h3 className="text-sm text-justify my-4">{props.data.title}</h3>
-                <div className="w-full h-10 my-4">
-                  <audio ref={audioRef} src={props.data.enclosures[0].url}></audio>
-                  <div className="flex items-center justify-between h-5">
+          <div className="justify-center items-center flex  h-full fixed overflow-x-hidden overflow-y-auto inset-0 z-50 md:bg-[url('/assets/popup-bg.png')] md:bg-contain md:bg-no-repeat md:bg-center">
+            <div className="flex flex-row justify-around md:w-[37%] w-full -mt-12">
+              <button
+                className="bg-transparent md:mr-5 w-7 top-0 h-7"
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+              >
+                <img src="/assets/arrow-icon.png" className="w-7 h-7"/>
+              </button>
+              <div className=" rounded-bl-3xl rounded-tr-3xl shadow-lg shadow-black md:w-[70%] w-[90%]  bg-white">
+                <div className=" w-[80%] mx-auto flex flex-col justify-evenly">
+                  <img
+                    src={`${props.data.itunes_image.href}`}
+                    className="w-[40%] mx-auto justify-self-auto rounded-bl-3xl rounded-tr-3xl shadow-lg shadow-[#22668d] mt-4"
+                  />
+                  <h3 className="text-sm text-justify my-2">
+                    {props.data.title}
+                  </h3>
+                  <div className="w-full h-10 mb-2">
+                    <audio
+                      ref={audioRef}
+                      src={props.data.enclosures[0].url}
+                    ></audio>
+                    <div className="flex items-center justify-between h-5">
                       <div className="w-11 text-xs text-center bottom-0">
                         {formatTime(currentTime)}
                       </div>
                       <button
                         onClick={playPauseToggle}
-                        className="text-[#22668d] cursor-pointer">
-                        {isPlaying ? <Pause/> : <Play/>}
+                        className="text-[#22668d] cursor-pointer"
+                      >
+                        {isPlaying ? <Pause /> : <Play />}
                       </button>
                       <div className="text-xs text-center bottom-0">
-                       {formatTime(itunesDuration)}
+                        {formatTime(itunesDuration)}
                       </div>
+                    </div>
+                    <div className="w-full h-0">
+                      <input
+                        type="range"
+                        min="0"
+                        max={itunesDuration}
+                        step="0.01"
+                        value={currentTime}
+                        onChange={handleSliderChange}
+                        className="w-full text-black h-1 bg-[#22668d8d] appearance-none accent-[#22668d]"
+                      />
+                    </div>
                   </div>
-                  <div className="w-full h-0">
-                    <input
-                      type="range"
-                      min="0"
-                      max={itunesDuration}
-                      step="0.01"
-                      value={currentTime}
-                      onChange={handleSliderChange}
-                      className="w-full text-black h-1 bg-[#22668d8d] appearance-none accent-[#22668d]"
-                    />
+                  <div className="mb-4 text-xs text-justify">
+                    {!expanded ? (
+                      <div>
+                      {props.data.description.length > 300
+                        ? props.data.description.slice(3, 300) + "..."
+                        : props.data.description}
+                      <span onClick={() => setExpanded(!expanded)} >
+                        <b>Read More</b>
+                      </span>
+                      </div>
+                    ):null}
+                    {expanded ? (
+                      <div onClick={() => setExpanded(false)}>
+                        {props.data.description}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
-                <p className="mb-4 text-xs text-justify  ">
-                  {props.data.description.length > 150
-                    ? props.data.description.slice(3, 150) + "..."
-                    : props.data.description}
-                </p>
               </div>
             </div>
           </div>
-        </div>
-        
+
           <div className="opacity-80 fixed inset-0 z-40 bg-black"> </div>
-        
-      </>
+        </>
       ) : null}
     </>
-  )
+  );
 };
 
 export default PodcastCard;
