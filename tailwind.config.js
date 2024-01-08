@@ -14,7 +14,7 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'doodle': "url('../public/assets/doodle_bg.png')",
         'header-bg': "url('../public/assets/view_bg.png')",
-        'details-bg': "url('../public/assets/courseDetail_bg.png')"
+        'details-bg': "url('../public/assets/courseDetail_bg.png')",
       },
     },
   },

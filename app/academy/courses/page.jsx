@@ -44,13 +44,13 @@ const Course = () => {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         handleSearch={handleSearch}
-        title={"Course"}
+        title={"Courses"}
       />
       <section className="bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
         {loading ? (
           <Loader />
         ) : filteredCourseData.length === 0 ? (
-          <p className="pt-10 text-center text-xl font-medium">
+          <p className="pt-10 text-center text-xl font-medium mb-3">
             No Course Found.
           </p>
         ) : (
