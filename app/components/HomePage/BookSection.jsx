@@ -11,13 +11,16 @@ const BookSection = () => {
   const [data, setData] = useState([]);
   const Books = async () => {
     try {
-      const response = await axios.get(`${apiLink}/book`, {
+      const response = await axios.get(`${apiLink}/book`
+      , {
         params: {
           page: 1,
           limit: 1,
         },
-      });
-      setData(response.data.books[0]);
+      }
+      );
+      setData(response.data.Books[0]);
+      console.log(response.data.Books[0]);
     } catch (error) {
       console.error("Error fetching book data:", error);
     }
@@ -29,11 +32,11 @@ const BookSection = () => {
     <main className="w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
       <section className="flex md:justify-center items-center my-10 mx-auto max-w-6xl w-full flex-col">
         <HomeTitle title="Books" link="/literature/books" />
-        <div className="flex justify-evenly items-start flex-col md:flex-row mt-6 mb-10 md:w-[70%]">
-          {data.book_path && (
+        <div className="flex justify-evenly items-start flex-col md:flex-row mt-6 mb-10 md:w-[90%]">
+          {data && (
             <Image
-              src={`https://media.brajsundar.com/${data?.book_path}`}
-              alt="reels preview"
+              src={data.thumbnail}
+              alt="books preview"
               onClick={() => navigate.push("/literature/books")}
               height={400}
               width={300}
@@ -41,10 +44,10 @@ const BookSection = () => {
             />
           )}
           <div className="w-[90%] md:w-[60%] mt-6 md:mt-0 mx-auto">
-            <p className="text-[#22668d] text-2xl md:text-3xl font-semibold mb-2">
-              {data && data?.book_name}
+            <p className="text-[#22668d] text-2xl text-left md:text-3xl font-semibold mb-2">
+              {data && data?.bookName}
             </p>
-            <p className="md:text-lg mb-2 line-clamp-4">{data?.details}</p>
+            <p className="md:text-lg mb-2 line-clamp-4">{data?.detail}</p>
             <button
               className="bg-[#22668D] text-white px-4 py-1 rounded-md mt-3"
               onClick={() => navigate.push("/literature/books")}

@@ -9,13 +9,16 @@ const VideoSection = () => {
   const [data, setData] = useState([]);
   const VideoFetch = async () => {
     try {
-      const response = await axios.get(`${apiLink}/youtube`, {
+      const response = await axios.get(`${apiLink}/youtube`
+      , {
         params: {
           page: 1,
           limit: 3,
         },
-      });
-      setData(response.data.youtube);
+      }
+      );
+      setData(response.data.youtubeVideo);
+      console.log(response.data);
     } catch (error) {
       console.error("Error fetching Video data:", error);
     }
@@ -34,7 +37,7 @@ const VideoSection = () => {
                               <VideoCard
                                   key={item.id}
                                   data={{
-                                      title: item.title,
+                                      title: item.video_name,
                                       url: item.video_url,
                                   }}
                               />

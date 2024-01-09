@@ -41,9 +41,16 @@ const EMagazine = () => {
       console.error("Error fetching Article data:", error);
     }
   };
+  // useEffect(() => {
+  //   fetchEMagazine();
+  // }, [currentPage]);
   useEffect(() => {
-    fetchEMagazine();
-  }, [currentPage]);
+    const fetchAndSetEMagazine = async () => {
+      await fetchEMagazine();
+    };
+  
+    fetchAndSetEMagazine();
+  }, [currentPage, fetchEMagazine]);
 
   const totalPages = Math.ceil(totalEmazine / emagazinePerPage);
 

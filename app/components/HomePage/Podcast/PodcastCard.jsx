@@ -78,7 +78,7 @@ const PodcastCard = (props) => {
         audio.removeEventListener("ended", handleEnded);
       };
     }
-  }, []);
+  }, [handleLoadedMetadata]);
 
   const handleSliderChange = (e) => {
     const newTime = parseFloat(e.target.value);
@@ -155,13 +155,22 @@ const PodcastCard = (props) => {
                 type="button"
                 onClick={() => setIsModalOpen(false)}
               >
-                <img src="/assets/arrow-icon.png" className="w-7 h-7"/>
+                <Image
+                  src="/assets/arrow-icon.png"
+                  className="w-7 h-7"
+                  alt="Arrow Icon"
+                  width={28}
+                  height={28}
+                />
               </button>
               <div className=" rounded-bl-3xl rounded-tr-3xl shadow-lg shadow-black md:w-[70%] w-[90%]  bg-white">
                 <div className=" w-[80%] mx-auto flex flex-col justify-evenly">
-                  <img
+                  <Image
                     src={`${props.data.itunes_image.href}`}
                     className="w-[40%] mx-auto justify-self-auto rounded-bl-3xl rounded-tr-3xl shadow-lg shadow-[#22668d] mt-4"
+                    alt="iTunes Image"
+                    width={200}
+                    height={500}
                   />
                   <h3 className="text-sm text-justify my-2">
                     {props.data.title}
@@ -200,19 +209,30 @@ const PodcastCard = (props) => {
                   <div className="mb-4 text-xs text-justify">
                     {!expanded ? (
                       <div>
-                      {props.data.description.length > 300
-                        ? props.data.description.slice(3, 300) + "..."
-                        : props.data.description}
-                      <span className="text-[#22668d] cursor-pointer" onClick={() => setExpanded(!expanded)} >
-                        <b>Read More</b>
-                      </span>
+                        {props.data.description.length > 300
+                          ? props.data.description.slice(3, 300) + "..."
+                          : props.data.description}
+                        <span
+                          className="text-[#22668d] cursor-pointer"
+                          onClick={() => setExpanded(!expanded)}
+                        >
+                          <b>Read More</b>
+                        </span>
                       </div>
-                    ):null}
+                    ) : null}
                     {expanded ? (
-                      <div onClick={() => setExpanded(false)}>
-                      {props.data.description.length > 700
+                      <div
+                        onClick={() => setExpanded(false)}
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            props.data.description.length > 700
+                              ? props.data.description.slice(3, 700) + "..."
+                              : props.data.description,
+                        }}
+                      >
+                        {/* {props.data.description.length > 700
                         ? props.data.description.slice(3, 700) + "..."
-                        : props.data.description}
+                        :  props.data.description} */}
                       </div>
                     ) : null}
                   </div>

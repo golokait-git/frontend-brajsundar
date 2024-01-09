@@ -10,21 +10,22 @@ const BookMain = ({ data, setSelectedBook, setHide }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [active, setActive] = useState(false);
   const [showReview, setShowReview] = useState(false);
+  console.log(data);
   useEffect(() => {
     if (selectedOption === "") setActive(false);
   }, [selectedOption]);
   return (
     <div
-      key={data.title}
+      key={data.bookName}
       className="mt-12 mb-10 w-[90%] md:w-[80%] mx-auto flex flex-col md:flex-row justify-center md:items-start items-center border-b-2 pb-12"
     >
       {showReview && (
-        <Review title={data.book_name} setShowReview={setShowReview} />
+        <Review title={data.bookName} setShowReview={setShowReview} />
       )}
       <div className="flex justify-center items-center flex-col">
         <Image
-          src={`https://media.brajsundar.com/${data.book_path}`}
-          alt={data.title}
+          src={data.thumbnail}
+          alt={data.bookName}
           height={600}
           width={240}
           className="object-cover rounded-xl"
@@ -43,16 +44,16 @@ const BookMain = ({ data, setSelectedBook, setHide }) => {
       </div>
       <div className="w-[95%] md:w-[60%] mt-8 ml-0 md:mt-0 md:ml-10">
         <p className="text-[#22668d] font-semibold text-2xl md:text-4xl mb-4">
-          {data.book_name}
+          {data.bookName}
         </p>
-        <p className="text-sm md:text-base">{data.details}</p>
+        <p className="text-sm md:text-base">{data.detail}</p>
         {(data.prebook === "YES" || data.prebook === "0") && (
           <button
-            className="bg-[#142834] text-[#fff] font-medium md:font-semibold px-6 py-2 rounded mt-6 text-sm md:text-base"
+            className="bg-[#22668d] text-white px-4 text-xl md:text-lg rounded-bl-2xl rounded-tr-2xl scale-100 hover:scale-105 hover:transition-all hover:duration-200"
             onClick={() => {
               setHide(false);
               window.scrollTo(0, 0);
-              setSelectedBook(data.book_name);
+              setSelectedBook(data.bookName);
             }}
           >
             Preorder This Book
@@ -77,7 +78,7 @@ const BookMain = ({ data, setSelectedBook, setHide }) => {
               {data.country.split(",").map((item, index) => {
                 return (
                   <option
-                    value={data.link.split(",")[index].replaceAll(`"`, "")}
+                    value={data.country.split(",")[index].replaceAll(`"`, "")}
                     key={index}
                     className="w-full text-black"
                   >

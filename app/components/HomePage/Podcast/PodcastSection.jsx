@@ -32,7 +32,7 @@ const PodcastSection = () => {
           {data &&
             data.map((podcast) => {
               return (
-                <PodcastCard key={podcast.id} data={podcast} type={"home"} />
+                <PodcastCard key={podcast.id} data={podcast} type={"home"}/>
               );
             })}
         </div>

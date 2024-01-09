@@ -37,31 +37,34 @@ const Books = () => {
   const [searchData, setSearchData] = useState([]);
   const [searchActive, setSearchActive] = useState(false);
 
-  const searchHandler = async (e) => {
-    setSearchData({});
-    e.preventDefault();
-    if (search) {
-      setSearchActive(true);
-      setLoading(true);
-      try {
-        const response = await axios.get(`${apiLink}/book`, {
-          params: {
-            search,
-          },
-        });
-        setSearchData(response.data.books);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        console.error("Error fetching podcast data:", error);
-      }
-    }
-  };
+  // const searchHandler = async (e) => {
+  //   setSearchData({});
+  //   e.preventDefault();
+  //   if (search) {
+  //     setSearchActive(true);
+  //     setLoading(true);
+  //     try {
+  //       const response = await axios.get(`${apiLink}/book`
+  //       // , {
+  //       //   params: {
+  //       //     search,
+  //       //   },
+  //       // }
+  //       );
+  //       setSearchData(response.data);
+  //       console.log(response.data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       setLoading(false);
+  //       console.error("Error fetching podcast data:", error);
+  //     }
+  //   }
+  // };
 
-  const searchResetHandler = () => {
-    setSearchActive(false);
-    setSearch("");
-  };
+  // const searchResetHandler = () => {
+  //   setSearchActive(false);
+  //   setSearch("");
+  // };
 
   const onValueChangeBulkOrder = (e) => {
     setBulkOrder({ ...bulkorder, [e.target.name]: e.target.value });
@@ -73,13 +76,16 @@ const Books = () => {
   const Books = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${apiLink}/book`, {
-        params: {
-          page: 1,
-          limit: 12,
-        },
-      });
-      setBook(response.data.books);
+      const response = await axios.get(
+        `${apiLink}/book`
+        // , {
+        //   params: {
+        //     page: 1,
+        //     limit: 12,
+        //   },
+        // }
+      );
+      setBook(response.data.Books);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -174,11 +180,11 @@ const Books = () => {
     }
   };
 
-  useEffect(() => {
-    if (search.length === 0) {
-      searchResetHandler();
-    }
-  }, [search]);
+  // useEffect(() => {
+  //   if (search.length === 0) {
+  //     searchResetHandler();
+  //   }
+  // }, [search]);
 
   return (
     <>
@@ -250,29 +256,21 @@ const Books = () => {
         </div>
       )}
       <section className="w-full min-h-[100vh]">
-        <div className="relative z-10">
-          <Image
-            src={require("../../../public/assets/image2.jpg")}
-            alt="book author image"
-            className="md:h-[100vh] h-[70vh] w-full object-cover"
-          />
-          <p className="text-white text-center md:text-left md:text-xl font-bold absolute bottom-12 left-12 tracking-wide bg-[#142834] px-6 py-3 rounded sm:text-center">
-            nityaḿ bhāgavata-sevayā
-          </p>
+        <div className="flex md:flex-row-reverse flex-col justify-between items-center md:mb-12 w-[80%] mx-auto md:w-[80%] md:mx-auto ">
+          <div className="md:w-[40%]">
+            <Image src="/assets/books.png" width={440} height={380} alt="" />
+          </div>
+          <div className=" bg-[url('/assets/bg-line.png')] bg-contain bg-no-repeat bg-center md:w-[60%] py-[20%]">
+            <div className="md:h-[35%] md:px-[39%] md:w-full w-[20%] mx-auto ">
+              <h1 className="text-xl  md:text-4xl text-center text-[#22668d] px-2 rounded-bl-2xl rounded-tr-2xl shadow-lg shadow-[#22668d] bg-white">
+                Books
+              </h1>
+            </div>
+          </div>
         </div>
-        <p className="bg-[#142834] md:w-full text-white py-2 text-center font-medium tracking-wide sticky top-0 z-40 text-xs md:text-base">
-          NOTE: If your nation is not featured on this list, please visit{" "}
-          <a
-            href="https://www.amazon.com"
-            target="_blank"
-            className="underline"
-          >
-            Amazon.com
-          </a>
-          .
-        </p>
+
         <div className="min-h-[90vh] max-w-6xl mx-auto">
-          <form
+          {/* <form
             className="flex justify-center items-center border-2 w-[90%] mx-auto my-10 md:w-[30%] border-[#22668d] rounded-md md:mb-0 mb-4"
             onSubmit={searchHandler}
           >
@@ -300,7 +298,7 @@ const Books = () => {
                 <Search color="white" />
               </button>
             )}
-          </form>
+          </form> */}
           {loading && (
             <div className="flex justify-center items-center my-10">
               <Oval
@@ -356,12 +354,12 @@ const Books = () => {
         </div>
 
         {/* Bulk Order */}
-        <section className="bg-[#142834] w-full">
+        <section className=" w-full font-serif">
           <div className="flex justify-center items-center mx-auto max-w-6xl py-14 flex-col">
-            <p className="text-white font-semibold text-2xl text-center md:text-3xl mb-4">
+            <p className="text-[#22668d] font-semibold text-2xl text-center md:text-3xl mb-4">
               Want to purchase books in bulk?
             </p>
-            <p className="text-white/80 text-sm md:text-base text-center mb-10">
+            <p className="text-[#22668d] text-sm md:text-base text-center mb-10">
               Fill this from if you want to order any book in bulk. <br />
               We will get in touch with you soon.
             </p>
@@ -371,32 +369,32 @@ const Books = () => {
             >
               <div className="w-full flex justify-evenly items-center md:gap-4 flex-col md:flex-row">
                 <div className="w-full md:w-1/2 flex justify-center items-start flex-col my-2">
-                  <label htmlFor="firstname" className="text-white/80">
+                  <label htmlFor="firstname" className="text-black">
                     First Name
                   </label>
                   <input
                     type="text"
                     name="firstname"
-                    className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+                    className="w-full bg-white rounded-bl-2xl rounded-tr-2xl border-2 py-2 px-3 border-dashed border-[#22668d] text-black caret-black outline-none"
                     onChange={onValueChangeBulkOrder}
                     value={bulkorder.firstname}
                   />
                 </div>
                 <div className="w-full md:w-1/2 flex justify-center items-start flex-col my-2">
-                  <label htmlFor="lastname" className="text-white/80">
+                  <label htmlFor="lastname" className="text-black">
                     Last Name
                   </label>
                   <input
                     type="text"
                     name="lastname"
-                    className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+                    className="w-full bg-white rounded-bl-2xl rounded-tr-2xl border-2 py-2 px-3 border-dashed border-[#22668d] text-black caret-black outline-none"
                     onChange={onValueChangeBulkOrder}
                     value={bulkorder.lastname}
                   />
                 </div>
               </div>
               <div className="w-full flex justify-center items-start flex-col my-2">
-                <label htmlFor="address" className="text-white/80">
+                <label htmlFor="address" className="text-black">
                   Address
                 </label>
                 <textarea
@@ -404,44 +402,44 @@ const Books = () => {
                   id="address"
                   cols="30"
                   rows="3"
-                  className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+                  className="w-full bg-white rounded-bl-2xl rounded-tr-2xl border-2 py-2 px-3 border-dashed border-[#22668d] text-black caret-black outline-none"
                   onChange={onValueChangeBulkOrder}
                   value={bulkorder.message}
                 ></textarea>
               </div>
               <div className="w-full flex justify-evenly items-center md:gap-4 flex-col md:flex-row">
                 <div className="w-full md:w-1/3 flex justify-center items-start flex-col my-2">
-                  <label htmlFor="country" className="text-white/80">
+                  <label htmlFor="country" className="text-black">
                     Country
                   </label>
                   <input
                     type="text"
                     name="country"
-                    className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+                    className="w-full bg-white rounded-bl-2xl rounded-tr-2xl border-2 py-2 px-3 border-dashed border-[#22668d] text-black caret-black outline-none"
                     onChange={onValueChangeBulkOrder}
                     value={bulkorder.country}
                   />
                 </div>
                 <div className="w-full md:w-1/3 flex justify-center items-start flex-col my-2">
-                  <label htmlFor="state" className="text-white/80">
+                  <label htmlFor="state" className="text-black">
                     State
                   </label>
                   <input
                     type="text"
                     name="state"
-                    className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+                    className="w-full bg-white rounded-bl-2xl rounded-tr-2xl border-2 py-2 px-3 border-dashed border-[#22668d] text-black caret-black outline-none"
                     onChange={onValueChangeBulkOrder}
                     value={bulkorder.state}
                   />
                 </div>
                 <div className="w-full md:w-1/3 flex justify-center items-start flex-col my-2">
-                  <label htmlFor="city" className="text-white/80">
+                  <label htmlFor="city" className="text-black">
                     City
                   </label>
                   <input
                     type="text"
                     name="city"
-                    className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+                    className="w-full bg-white rounded-bl-2xl rounded-tr-2xl border-2 py-2 px-3 border-dashed border-[#22668d] text-black caret-black outline-none"
                     onChange={onValueChangeBulkOrder}
                     value={bulkorder.city}
                   />
@@ -449,7 +447,7 @@ const Books = () => {
               </div>
               <div className="w-full flex justify-evenly items-center gap-4">
                 <div className="w-1/2 flex justify-center items-start flex-col my-2">
-                  <label htmlFor="book" className="text-white/80">
+                  <label htmlFor="book" className="text-black">
                     Select Book
                   </label>
                   <select
@@ -459,7 +457,7 @@ const Books = () => {
                     onChange={(e) => {
                       setBulkOrder({ ...bulkorder, book: e.target.value });
                     }}
-                    className="text-[#fff] bg-transparent  border-[1.5px] border-[#f5f5f550] caret-white outline-none h-10 px-2 rounded-md w-full appearance-none"
+                    className="text-black bg-white rounded-bl-2xl rounded-tr-2xl py-2 px-3 border-dashed border-2 border-[#22668d] caret-black outline-none h-10 w-full appearance-none"
                     placeholder="Select Book"
                   >
                     <option value="" selected className="text-black">
@@ -469,24 +467,24 @@ const Books = () => {
                       Object.keys(book).map((item, index) => {
                         return (
                           <option
-                            value={book[item].title}
+                            value={book[item].bookName}
                             key={index}
                             className="w-full text-black"
                           >
-                            {book[item].title}
+                            {book[item].bookName}
                           </option>
                         );
                       })}
                   </select>
                 </div>
                 <div className="w-1/2 flex justify-center items-start flex-col my-2">
-                  <label htmlFor="quantity" className="text-white/80">
+                  <label htmlFor="quantity" className="text-black">
                     Quantity
                   </label>
                   <input
                     type="number"
                     name="quantity"
-                    className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+                    className="w-full bg-white rounded-bl-2xl rounded-tr-2xl border-2 py-2 px-3 border-dashed border-[#22668d] text-black caret-black outline-none"
                     onChange={onValueChangeBulkOrder}
                     value={bulkorder.quantity}
                   />
@@ -494,32 +492,32 @@ const Books = () => {
               </div>
               <div className="w-full flex justify-evenly items-center gap-4">
                 <div className="w-1/2 flex justify-center items-start flex-col my-2">
-                  <label htmlFor="pincode" className="text-white/80">
+                  <label htmlFor="pincode" className="text-black">
                     Pincode
                   </label>
                   <input
                     type="number"
                     name="pincode"
-                    className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+                    className="w-full bg-white rounded-bl-2xl rounded-tr-2xl border-2 py-2 px-3 border-dashed border-[#22668d] text-black caret-black outline-none"
                     onChange={onValueChangeBulkOrder}
                     value={bulkorder.pincode}
                   />
                 </div>
                 <div className="w-1/2 flex justify-center items-start flex-col my-2">
-                  <label htmlFor="phoneno" className="text-white/80">
+                  <label htmlFor="phoneno" className="text-black">
                     Phone Number
                   </label>
                   <input
                     type="number"
                     name="phoneno"
-                    className="w-full bg-transparent py-2 px-3 border-[1.5px] border-[#f5f5f550] text-white/80 caret-white outline-none rounded"
+                    className="w-full bg-white rounded-bl-2xl rounded-tr-2xl border-2 py-2 px-3 border-dashed border-[#22668d] text-black caret-black outline-none"
                     onChange={onValueChangeBulkOrder}
                     value={bulkorder.phoneno}
                   />
                 </div>
               </div>
               <button
-                className="bg-white text-[#142834] font-semibold px-8 text-lg py-3 mt-8 rounded"
+                className="bg-[#22668d] text-white px-4 text-xl md:text-lg rounded-bl-2xl rounded-tr-2xl scale-100 hover:scale-105 hover:transition-all hover:duration-200"
                 type="submit"
               >
                 Submit Form

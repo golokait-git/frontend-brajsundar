@@ -5,7 +5,8 @@ import { useParams } from "next/navigation";
 import Wrapper from "../../../Wrapper";
 import { LiaCertificateSolid } from "react-icons/lia";
 import Loader from "../../(components)/Loader";
-import Review from "../../../components/Review"
+import Review from "../../../components/Review";
+import Image from "next/image";
 
 const CourseDetail = () => {
   const params = useParams();
@@ -85,13 +86,10 @@ const CourseDetail = () => {
                     {data.bundle.bundle_description}
                   </p>
                   <ul className="list-inside list-image-[url(/assets/lang-icon.png)] text-black text-center md:text-left align-middle text-sm h-4">
-                  <li className="h-4">
-                  Taught in {data.tags[1].value[0]}
-                  </li>
+                    <li className="h-4">Taught in {data.tags[1].value[0]}</li>
                   </ul>
                   {findTagValue(data.tags, 273) == "true" && (
                     <p className=" text-sm justify-start items-center text-black">
-                      
                       Instructor: Brajsundar Das
                     </p>
                   )}
@@ -99,11 +97,18 @@ const CourseDetail = () => {
                     className={`bg-[#3c789a] select-none text-[#fff] font-bold text-md px-2 py-2 rounded-tr-2xl rounded-bl-2xl scale-100 hover:scale-105 hover:transition-all hover:duration-200 cursor-pointer course-landing-buy_${data.bundle.institution_bundle_id} z-50`}
                     data-instbundleid={data.bundle.institution_bundle_id}
                   >
-                    Enroll Now at {data.bundle.currency_symbol} {data.bundle.cost}
+                    Enroll Now at {data.bundle.currency_symbol}{" "}
+                    {data.bundle.cost}
                   </a>
                 </div>
                 <div className="w-[80%] my-auto">
-                  <img src={data.bundle.img_url} className="h-full rounded-tr-3xl rounded-bl-3xl shadow-[#22668d] shadow-xl"/>
+                  <Image
+                    src={data.bundle.img_url}
+                    className="h-full rounded-tr-3xl rounded-bl-3xl shadow-[#22668d] shadow-xl"
+                    alt="Bundle Image"
+                    width={600}
+                    height={350}
+                  />
                 </div>
               </div>
             </div>
@@ -126,7 +131,7 @@ const CourseDetail = () => {
               <div className="py-10 w-full">
                 <div className="max-w-6xl mx-auto w-[90%] md:w-full">
                   <p className="font-bold mx-auto text-2xl md:text-3xl mb-6">
-                  What's this course about?
+                    What&apos;s this course about?
                   </p>
                   <div
                     className={`mx-auto text-black para`}
@@ -147,7 +152,7 @@ const CourseDetail = () => {
             <Loader />
           </div>
         )}
-        <Review/>
+        {/* <Review/> */}
       </section>
     </Wrapper>
   );

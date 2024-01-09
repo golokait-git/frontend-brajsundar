@@ -52,26 +52,16 @@ const Podcast = () => {
 
   // useEffect for search
 
-  useEffect(() => {
-    if (search.trim() !== '') {
-      searchHandler();
-    } else if (search.trim() === '') {
-      searchResetHandler();
+  // useEffect(() => {
+  //   if (search.trim() !== '') {
+  //     searchHandler();
+  //   } else if (search.trim() === '') {
+  //     searchResetHandler();
       
-    } else {
-      simulateEnter();
-    };
-  }, [search]);
-
-  const indexOfLastPodcast = currentPage * podcastPerPage;
-  const indexOfFirstPodcast = indexOfLastPodcast - podcastPerPage;
-  const currentPodcasts = searchActive
-    ? searchData
-    : podcasts.slice(0, indexOfLastPodcast);
-
-  // Calculate the total number of pages
-  const totalPages = Math.ceil((searchActive ? searchData.length : totalPodcasts) / podcastPerPage);
-  
+  //   } else {
+  //     simulateEnter();
+  //   };
+  // }, [search]);
 
   const searchHandler = async (e) => {
     if (search) {
@@ -96,15 +86,55 @@ const Podcast = () => {
     setSearch("");
   };
 
+  // simulateEnter function
+  const simulateEnter = () => {
+    
+    const event = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      code: 'Enter',
+      which: 13,
+      keyCode: 13,
+      bubbles: true,
+    });
+    if (inputRef.current) {
+    inputRef.current.dispatchEvent(event);
+    
+  }
+};
+
+  useEffect(() => {
+    const handleSearch = () => {
+      if (search.trim() !== '') {
+        searchHandler();
+      } else if (search.trim() === '') {
+        searchResetHandler();
+      } else {
+        simulateEnter();
+      }
+    };
+  
+    handleSearch();
+  }, [search, searchHandler, searchResetHandler, simulateEnter]);
+
+  const indexOfLastPodcast = currentPage * podcastPerPage;
+  const indexOfFirstPodcast = indexOfLastPodcast - podcastPerPage;
+  const currentPodcasts = searchActive
+    ? searchData
+    : podcasts.slice(0, indexOfLastPodcast);
+
+  // Calculate the total number of pages
+  const totalPages = Math.ceil((searchActive ? searchData.length : totalPodcasts) / podcastPerPage);
+  
+
+  
+
+  
+
   const resetFilterHandler = () => {
     setSelectedFilter("");
     setSearch("");
     setSearchActive(false);
   };
-
-  useEffect(() => {
-    getAllCategoryData();
-  }, []);
 
   const getAllCategoryData = async () => {
     try {
@@ -135,6 +165,19 @@ const Podcast = () => {
       console.error("Error fetching data:", error);
     }
   };
+
+  // useEffect(() => {
+  //   getAllCategoryData();
+  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      await getAllCategoryData();
+    };
+  
+    fetchData();
+  }, [getAllCategoryData]);
+
+
 
   const filterHandler = async (value) => {
     if (value) {
@@ -169,21 +212,7 @@ const Podcast = () => {
       simulateEnter();
     }
   };
-// simulateEnter function
-  const simulateEnter = () => {
-    
-    const event = new KeyboardEvent('keydown', {
-      key: 'Enter',
-      code: 'Enter',
-      which: 13,
-      keyCode: 13,
-      bubbles: true,
-    });
-    if (inputRef.current) {
-    inputRef.current.dispatchEvent(event);
-    
-  }
-};
+
   
   return (
     <main className="w-full bg-gradient-to-r from-[#e9e6d9] to-[#ceecf5]">
@@ -198,7 +227,7 @@ const Podcast = () => {
               </div>
             </div>
             <div>
-              <Image src="/assets/podcast.png" width={440} height={380} />
+              <Image src="/assets/podcast.png" width={440} height={380} alt="" />
             </div>
           </div>
           <div className="flex justify-between items-center my-5 md:mb-12 w-full md:w-[90%] md:mx-auto md:flex-row-reverse flex-col">

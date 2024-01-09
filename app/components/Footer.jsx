@@ -21,7 +21,7 @@ const Footer = () => {
             <Image
               src={require("../../public/assets/brajsundar-logo-light.png")}
               alt="logo"
-              height={50}
+              height={40}
               width={100}
               className=" h-[40px] object-contain"
             />

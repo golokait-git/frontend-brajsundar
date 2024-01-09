@@ -1,13 +1,20 @@
 import React from "react";
 import Link from "next/link";
+import Image from 'next/image';
 const CourseCard = (props) => {
   return (
     <Link
       href={`/academy/course-detail/${props.courseData.institution_bundle_id}`}
       className="w-[90%] md:w-full mx-auto overflow-hidden shadow-lg shadow-[#22668d] bg-white my-4 cursor-pointer flex justify-start flex-col items-start rounded-bl-[12%] rounded-tr-[12%]"
     >
-      <img className="w-full h-3/6 " alt="Card" src={props.courseData.img_url} />
-      <div className="px-6 py-4 h-full">
+      <Image
+  className="w-full h-3/6"
+  alt="Card"
+  src={props.courseData.img_url}
+  width={600}
+  height={300}
+/>
+      <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">
           {props.courseData.bundle_name}
         </div>
